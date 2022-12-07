@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(title: 'Reto 4'),
+      home: const MyHomePage(title: 'Geolocalizador - Reto 4'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -79,36 +79,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: listar(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ObtenerPosicion();
-          Alert(
-                  title: "ATENCION!!!",
-                  desc: "Esta seguro que desea almacenar su ubicacion " +
-                      Control.unaPosicion +
-                      "?",
-                  type: AlertType.info,
-                  buttons: [
-                    DialogButton(
-                        color: Colors.green,
-                        child: Text("SI"),
-                        onPressed: () {
-                          PeticionesDB.GuardarPosicion(
-                              Control.unaPosicion, DateTime.now().toString());
-                          Control.CargarTodaBD();
-                          Navigator.pop(context);
-                        }),
-                    DialogButton(
-                        color: Colors.red,
-                        child: Text("NO"),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        })
-                  ],
-                  context: context)
-              .show();
-        },
-        child: Icon(Icons.location_on_outlined),
-      ),
+          onPressed: () {
+            ObtenerPosicion();
+            Alert(
+                    title: "ATENCION!!!",
+                    desc: "Esta seguro que desea almacenar su ubicacion " +
+                        Control.unaPosicion +
+                        "?",
+                    type: AlertType.info,
+                    buttons: [
+                      DialogButton(
+                          color: Colors.green,
+                          child: Text("SI"),
+                          onPressed: () {
+                            PeticionesDB.GuardarPosicion(
+                                Control.unaPosicion, DateTime.now().toString());
+                            Control.CargarTodaBD();
+                            Navigator.pop(context);
+                          }),
+                      DialogButton(
+                          color: Colors.red,
+                          child: Text("NO"),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          })
+                    ],
+                    context: context)
+                .show();
+          },
+          child: Image.network(
+              'https://static.vecteezy.com/system/resources/previews/011/016/930/original/location-pin-3d-image-for-travel-equipment-location-pin-with-red-color-shade-in-a-3d-effect-gps-location-pin-on-a-transparent-background-free-png.png')),
     );
   }
 }
